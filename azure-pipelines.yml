@@ -23,12 +23,11 @@ stages:
 
       
      - script: |
-        python -m venv antenv
-        source antenv/bin/activate
-        python -m pip install --upgrade pip
-        pip install setup
-        find -name "requirements.txt"
-        pip install -r requirements.txt
+         python -m venv antenv
+         source antenv/bin/activate
+         python -m pip install --upgrade pip
+         pip install setup
+         pip install -r requirements.txt
        workingDirectory: $(Build.ArtifactStagingDirectory)
        displayName: "Install requirements"
 
