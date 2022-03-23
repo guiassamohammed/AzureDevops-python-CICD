@@ -29,7 +29,7 @@ stages:
         pip install setup
         pip install -r requirements.txt
        workingDirectory: $(projectRoot)
-       displayName: "Install requirements
+       displayName: "Install requirements"
 
      - task: ArchiveFiles@2
        displayName: archive the build
