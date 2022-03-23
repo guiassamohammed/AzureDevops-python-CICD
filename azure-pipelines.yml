@@ -28,13 +28,13 @@ stages:
         python -m pip install --upgrade pip
         pip install setup
         pip install -r requirements.txt
-       workingDirectory: $(projectRoot)
+       workingDirectory: $(Build.ArtifactStagingDirectory)
        displayName: "Install requirements"
 
      - task: ArchiveFiles@2
        displayName: archive the build
        inputs:
-             rootFolderOrFile: '$(projectRoot)'
+             rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
              includeRootFolder: true
              archiveType: 'zip'
              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
