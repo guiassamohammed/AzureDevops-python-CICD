@@ -55,7 +55,12 @@ stages:
     
     steps:
       
-      
+    - task: DownloadBuildArtifacts@1
+      inputs:
+         buildType: 'current'
+         downloadType: 'single'
+         artifactName: 'drop'
+         downloadPath: '$(Pipeline.Workspace)'
         
     - task: UsePythonVersion@0
       displayName: python version
