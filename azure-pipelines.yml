@@ -65,10 +65,18 @@ stages:
         downloadType: 'single'
         artifactName: 'drop'
         downloadPath: 'Build.ArtifactStagingDirectory'
+        
+    - task: UsePythonVersion@0
+      displayName: python version
+      inputs:
+           versionSpec: '3.x'
+           addToPath: true
+           architecture: 'x64'
+
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
         azureSubscription: 'MOGUIA (0140fa3e-3836-4df1-ad41-12987b3c3243)'
         appType: 'webAppLinux'
         WebAppName: 'python125'
-        packageForLinux: '$(Build.ArtifactStagingDirectory)'
+        packageForLinux: '$(Build.ArtifactStagingDirectory)/drop/$(Build.BuildId).zip'
