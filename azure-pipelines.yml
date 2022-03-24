@@ -60,7 +60,7 @@ stages:
          buildType: 'current'
          downloadType: 'single'
          artifactName: 'drop'
-         downloadPath: '$(Pipeline.Workspace)'
+         downloadPath: '$(Pipeline.Workspace)/drop/'
         
     - task: UsePythonVersion@0
       displayName: python version
@@ -75,4 +75,4 @@ stages:
         azureSubscription: 'MOGUIA (0140fa3e-3836-4df1-ad41-12987b3c3243)'
         appType: 'webAppLinux'
         WebAppName: 'python125'
-        packageForLinux: $(Pipeline.Workspace)/$(Build.BuildId).zip
+        packageForLinux: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
