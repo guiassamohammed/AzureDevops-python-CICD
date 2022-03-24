@@ -49,7 +49,7 @@ stages:
 - stage: depoly
   dependsOn: build
   jobs:
-  - job: deploy
+  - job: DeploymentJob
     pool:
       vmImage:  ubuntu-latest
     
