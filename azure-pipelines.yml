@@ -56,12 +56,6 @@ stages:
     steps:
       
       
-    - task: DownloadBuildArtifacts@1
-      inputs:
-        buildType: 'current'
-        downloadType: 'single'
-        artifactName: 'drop'
-        downloadPath: 'Build.ArtifactStagingDirectory'
         
     - task: UsePythonVersion@0
       displayName: python version
