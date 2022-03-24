@@ -41,12 +41,9 @@ stages:
              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
              replaceExistingArchive: true
             
-    - task: PublishBuildArtifacts@1
-      displayName:  publish the file
-      inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
+    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      displayName: 'Upload package'
+      artifact: drop
             
  
 - stage: depoly
@@ -79,4 +76,4 @@ stages:
         azureSubscription: 'MOGUIA (0140fa3e-3836-4df1-ad41-12987b3c3243)'
         appType: 'webAppLinux'
         WebAppName: 'python125'
-        packageForLinux: '$(Build.ArtifactStagingDirectory)/drop/$(Build.BuildId).zip'
+        packageForLinux: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
