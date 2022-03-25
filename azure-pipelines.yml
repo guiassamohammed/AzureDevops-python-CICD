@@ -36,7 +36,7 @@ stages:
       displayName: archive the build
       inputs:
              rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-             includeRootFolder: true
+             includeRootFolder: false
              archiveType: 'zip'
              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
              replaceExistingArchive: true
@@ -54,6 +54,12 @@ stages:
       vmImage:  ubuntu-latest
     
     steps:
+    - task: DownloadBuildArtifacts@1
+      inputs:
+          buildType: 'current'
+          downloadType: 'single'
+          artifactName: 'drop'
+          downloadPath: '$(Pipeline.Workspace)/drop/'
         
     - task: UsePythonVersion@0
       displayName: python version
@@ -68,4 +74,4 @@ stages:
         azureSubscription: 'MOGUIA (0140fa3e-3836-4df1-ad41-12987b3c3243)'
         appType: 'webAppLinux'
         WebAppName: 'python125'
-        packageForLinux: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        packageForLinux: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
