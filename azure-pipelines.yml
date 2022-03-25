@@ -54,13 +54,6 @@ stages:
       vmImage:  ubuntu-latest
     
     steps:
-      
-    - task: DownloadBuildArtifacts@1
-      inputs:
-         buildType: 'current'
-         downloadType: 'single'
-         artifactName: 'drop'
-         downloadPath: '$(Pipeline.Workspace)/drop/'
         
     - task: UsePythonVersion@0
       displayName: python version
