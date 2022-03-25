@@ -68,4 +68,4 @@ stages:
         azureSubscription: 'MOGUIA (0140fa3e-3836-4df1-ad41-12987b3c3243)'
         appType: 'webAppLinux'
         WebAppName: 'python125'
-        packageForLinux: $(Pipeline.Workspace)/drop/**.zip
+        packageForLinux: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
